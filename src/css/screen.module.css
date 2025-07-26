@@ -1,0 +1,6 @@
+.screen{
+    min-height: calc(100vh - 10rem);
+    width: 100%;
+    padding: 1.5625%;
+    background-color: aquamarine;
+}
