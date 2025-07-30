@@ -24,3 +24,17 @@ React 와 Spring Boot 3를 이용한 프로젝트 입니다.
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+
+  2025-07-30 저녘부터 2025-07-31 새벽까지
+
+  - 로그인 및 회원가입 페이지 프런트 쪽 개발 완료
+  - 타 사이트를 이용한 로그인 레이아웃 개발 완료
+  - 로그인 사이트 디자인 개발 및 적용 완료
+  - 메인 페이지에서 로그인 페이지 동작 확인 완료
+
+  **현재까지 사용한 기술**
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">

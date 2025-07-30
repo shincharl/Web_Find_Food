@@ -20,6 +20,9 @@ const Header = ({ toggleSidebar }) => {
             {/* 내비게이션 메뉴 */}
             <ul className="navbar-nav d-flex flex-row mb-0">
               <li className="nav-item me-3">
+                <Link to="/signin" className="nav-link active" aria-current="page">로그인</Link>
+              </li>
+              <li className="nav-item me-3">
                 <a className="nav-link active" aria-current="page" href="/">내 정보</a>
               </li>
               <li className="nav-item me-3">
