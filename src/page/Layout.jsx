@@ -1,3 +1,4 @@
+import {Outlet} from "react-router-dom"
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Screen from "../components/screen";
@@ -11,7 +12,9 @@ const Layout = () =>{
         <>
             <Header toggleSidebar={toggleSidebar}></Header>
             <Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar} />
-            <Screen></Screen>
+            <Screen>
+                <Outlet/>
+            </Screen>
             <Footer></Footer>
         </>
     );

@@ -1,9 +1,8 @@
 import styles from "../css/screen.module.css"
-const screen = () => {
+const screen = ({children}) => {
     return(
         <div className={styles.screen}>
-            <h1>메인 입니다!!!</h1>
-            <div style={{ height: '2000px' }}></div>
+            {children}
         </div>
     );
 }

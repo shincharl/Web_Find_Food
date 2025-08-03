@@ -26,7 +26,7 @@ const Header = ({ toggleSidebar }) => {
                 <a className="nav-link active" aria-current="page" href="/">내 정보</a>
               </li>
               <li className="nav-item me-3">
-                <a className="nav-link" href="/">예약</a>
+                <Link to="/reservation" className="nav-link">예약</Link>
               </li>
               <li className="nav-item">
                 <span className="nav-link disabled" aria-disabled="true">QnA</span>

@@ -38,3 +38,18 @@ React 와 Spring Boot 3를 이용한 프로젝트 입니다.
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+
+2025-08-03
+
+- 예약 페이지 카카오 지도 api 연동 완료
+- 웹사이트 header footer 레이아웃 고정 연동 완료
+- 카카오 지도 검색창 기능 개발 완료
+
+\*\*느낀점 (useRef 개념 공부 필요, 공부한 내용도 많이 잊어버리므로 개발하면서 지속적으로 습득한 내용 공부 하기)
+
+**현재까지 사용한 기술**
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
