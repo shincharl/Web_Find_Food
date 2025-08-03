@@ -47,7 +47,7 @@ React 와 Spring Boot 3를 이용한 프로젝트 입니다.
 
 \*\*느낀점 (useRef 개념 공부 필요, 공부한 내용도 많이 잊어버리므로 개발하면서 지속적으로 습득한 내용 공부 하기)
 
-**현재까지 사용한 기술**
+**현재까지 사용한 기술**</br>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
