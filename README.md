@@ -53,3 +53,20 @@ React 와 Spring Boot 3를 이용한 프로젝트 입니다.
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+
+2025-08-05
+
+- 예약 페이지 개발 중 개발 진로 변경
+  (아무 대책없이 예약 기능 만들고 있었는데, 강아지 산책에 영감을 받아서 대신 산책을 시켜주는 사이트를 만들면 좋을것 같다고 생각)
+- 메인페이지 수정 및 screen 부분 제작 부분 완료(이미지 디자인에 시간 오래 걸림)
+- css쪽 너무 잘 모르는거 같아서 모르는 부분 공부하면서 진행 시작, 메인페이지 완료후 백엔드 연동 실시
+- 반응형에 일단 너무 투자하지 말고, 일단 기능부터 개발 완료 후 디자인 수정하는 식으로 하기
+
+\*\*느낀점 (디자인은 진짜 어려운 거다 ㅎㅎ;; 개발자도 css 좀 알아야 될거 같아서 모르는 코드 좀 살펴보고 공부 및 디자인 완료 하기)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
