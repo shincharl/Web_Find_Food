@@ -1,0 +1,130 @@
+.service_container{
+    position: relative;
+    display: inline-block;
+}
+.tape{
+    position: absolute;
+    top: 10px;
+    width: 20vw;
+    height: 5vw;
+    top: 7vw;
+    left: 38vw;
+    background: rgba(255, 255, 230, 0.6);
+    /* backdrop-filter: blur(8px); */
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    /* transform: rotate(-5deg); */
+    pointer-events: none;
+}
+.service_image{
+    width: 100vw;
+    height: 20vw;
+    object-fit: cover;
+    display: block;
+}
+.main_name{
+    position: absolute;
+    top: 8vw;
+    left: 43vw;
+    font-size: 2vw;
+    color: #333;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+}
+.texts{
+    position: absolute;
+    top: 13vw;
+    left: 37.5vw;
+    font-size: 1.5vw;
+    color: whitesmoke;
+}
+
+
+/* 전체 레이아웃 기본 */
+.container {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #4b3832; /* 진한 브라운 */
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #fffaf5; /* 크림색 배경 */
+}
+
+/* 제목 스타일 */
+.container h1 {
+  font-size: 2rem;
+  color: #4b3832;
+  border-left: 5px solid #d4a373; /* 따뜻한 브라운 톤 */
+  padding-left: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.container h2 {
+  font-size: 1.2rem;
+  color: #8c6f54;
+  margin-bottom: 2rem;
+}
+
+/* 카드 레이아웃 */
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(75, 56, 50, 0.08);
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(75, 56, 50, 0.12);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: #4b3832;
+  margin-bottom: 0.5rem;
+}
+
+.card h4 {
+  font-size: 1rem;
+  color: #8c6f54;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #d58936; /* 포인트 오렌지 */
+}
+
+/* 구분선 */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #d4a373, transparent);
+  margin: 3rem 0;
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h1 {
+    font-size: 1.6rem;
+  }
+
+  .container h2 {
+    font-size: 1rem;
+  }
+}

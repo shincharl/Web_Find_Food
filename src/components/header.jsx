@@ -23,10 +23,13 @@ const Header = ({ toggleSidebar }) => {
                 <Link to="/signin" className="nav-link active" aria-current="page">로그인</Link>
               </li>
               <li className="nav-item me-3">
-                <a className="nav-link active" aria-current="page" href="/">내 정보</a>
+                <a className="nav-link active" aria-current="page" href="/">예약확인</a>
               </li>
               <li className="nav-item me-3">
-                <Link to="/reservation" className="nav-link">예약</Link>
+                <Link to="/reservation" className="nav-link active">예약</Link>
+              </li>
+               <li className="nav-item me-3">
+                <Link to="/service" className="nav-link active">서비스 요금</Link>
               </li>
               <li className="nav-item">
                 <span className="nav-link disabled" aria-disabled="true">QnA</span>

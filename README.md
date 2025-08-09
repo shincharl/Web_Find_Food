@@ -70,3 +70,20 @@ React 와 Spring Boot 3를 이용한 프로젝트 입니다.
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+
+2025-08-09
+
+- 서비스 요금 페이지 개발 완료
+- 서비스 요금 산정 및 서비스 종류 선택 완료 및 반영 완료
+- 서비스 페이지 디자인 적용 완료 및 footer 기능 및 디자인 개발 요청 지시
+- 잘 모르는 디자인 요소 블로그 정리 완료
+- (https://velog.io/@shincharl/CSS-%EC%98%A4%EB%8A%98-%EC%82%AC%EC%9A%A9%ED%95%9C-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%86%8D%EC%84%B1-%EB%AF%B8%EB%8B%88%EC%A0%95%EB%A6%AC1)
+
+\*\*느낀점 (공부 다 끝나고 개발하니 시간이 너무 촉박하다. 날잡아서 개발 진행부터 먼저하는 식으로 진행, 이런 날은 이른 공부해야하는 양 줄이고 개발에 집중하기)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
