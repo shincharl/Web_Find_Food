@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import styles from '../css/signin.module.css';
+import { signup, login } from "../api/auth";
+
 
 const Signin = () => {
 
@@ -17,17 +19,31 @@ const Signin = () => {
   /*로그인, 회원가입 전환하는 useState 훅*/
   const [change, setChange] = useState(true);
 
-  const handleSubmit1 = (e) => {
+  /* 로그인 에러정보 추가 */
+  const [errorMessage, setErrormessage] = useState("");
+
+  /* 백엔드 로그인 json 데이터 전달*/
+  const handleSubmit1 = async (e) => {
     e.preventDefault();
-    console.log('제출된 이메일: ', value1);
-    console.log('제출된 비밀번호: ', password1);
+    try {
+      const res = await login(value1, password1);
+      console.log('로그인 성공: ', res.data);
+      
+    } catch (error) {
+      console.error('로그인 실패: ', error.response?.data || error.message);
+      setErrormessage("로그인 실패...\n회원가입을 진행해 주세요.");
+      }
   };
 
-  const handleSubmit2 = (e) => {
+ /* 백엔드 회원가입 json 데이터 전달 */
+  const handleSubmit2 = async (e) => {
     e.preventDefault();
-    console.log('회원가입 하는 이름: ', name);
-    console.log('회원가입 하는 이메일: ', value2);
-    console.log('회원가입 하는 비밀번호: ', password2);
+    try {
+      const res = await signup(name, value2, password2);
+      console.log('회원가입 성공: ', res.data);
+    } catch (error) {
+      console.log('회원가입 실패: ', error.response?.data || error.message);
+    }
   };
 
   return (
@@ -56,6 +72,11 @@ const Signin = () => {
               placeholder="Password"
               className={styles.input_field}
             />
+
+            <div style={{whiteSpace: "pre-line", height : "1.2em", color: "red"}}>
+              {errorMessage || <>&nbsp;</>}
+            </div>
+
             <hr className={styles.divider} />
             <button type="submit" className={styles.button_primary}>로그인</button>
             <button type="button" onClick={() => setChange(false)}  className={styles.button_primary}>회원가입</button>
