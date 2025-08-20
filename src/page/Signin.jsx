@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle, faTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import styles from '../css/signin.module.css';
 import { signup, login } from "../api/auth";
+import {useNavigate} from "react-router-dom";
 
 
 const Signin = () => {
+
+  /*로그인 성공 시 페이지 이동*/
+  const navigate = useNavigate();
 
   /*로그인시 사용하는 useState 훅*/
   const [value1, setValue1] = useState("");
@@ -28,6 +32,9 @@ const Signin = () => {
     try {
       const res = await login(value1, password1);
       console.log('로그인 성공: ', res.data);
+      
+      navigate("/", {state : {userData : res.data}}); // 로그인 성공 시 메인페이지 이동
+
       
     } catch (error) {
       console.error('로그인 실패: ', error.response?.data || error.message);

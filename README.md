@@ -269,3 +269,159 @@ https://hstory0208.tistory.com/entry/Spring-Lombok%EB%A1%AC%EB%B3%B5%EC%9D%B4%EB
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25-08-20
+
+# 학습 루프 템플릿
+
+## 1. 문제 (Problem)
+
+- 오늘 학습 중에 마주친 문제나 궁금한 점을 구체적으로 작성하세요.
+
+예)
+
+- 1.  로그인 관련
+
+  - 로그인 성공 후 메인 페이지로 이동하는 방법
+  - 로그인 성공 시 사용자 정보를 페이지 간에 전달하는 방법 (state)
+  - location.state에서 안전하게 데이터 가져오는 방법
+
+- 2. Layout / Header 관련
+     - Layout에서 userData를 받아서 Header에 표시하는 방법
+     - 로그인 상태에 따라 로그인 링크 또는 username 표시
+     - 로그아웃 버튼 만들기 및 클릭 시 상태 초기화 + 페이지 이동
+
+- 3.  React / 코드 관련
+      - API에서 받은 데이터 구조와 코드 속성(username vs objectname) 불일치 문제
+
+---
+
+## 2. 검색 (Search)
+
+- 문제 해결을 위해 참고한 자료, 링크, 책, 블로그, AI 질문 등을 정리하세요.
+
+설명)
+
+- 리액트를 다루는 기술 책 참조
+
+- ChatGPT, Geminai에 질문
+
+---
+
+## 3. 적용 (Apply)
+
+- 찾은 내용을 바탕으로 시도한 코드나 설정 변경 내역을 기록하세요.
+
+설명)
+
+- 1.  로그인 관련
+  - 로그인 성공 후 메인 페이지로 이동하는 방법
+  - 로그인 성공 시 사용자 정보를 페이지 간에 전달하는 방법 (state)
+  - location.state에서 안전하게 데이터 가져오는 방법
+
+(1) - 개념 : React Router의 useNavigate를 사용하면 프로그래밍 방식으로 페이지 이동 가능
+
+![alt text](image-11.png)
+
+     : useNavigate 사용법
+
+     - 1. useNavigate 불러오기
+
+      import {useNavigate} from 'react-router-dom';
+
+     - 2. navigate 함수 생성
+
+     const navigate = useNavigate();
+
+     - 3. 페이지 이동
+
+      (단순 이동)
+
+      navigate('/');
+
+      (뒤로 이동)
+
+      navigate(-1); //브라우저 히스토리에서 한 단계 뒤로
+
+      (앞으로 이동)
+
+      navigate(1); //브라우저 히스토리에서 한 단계 앞으로
+
+      (상태 전달)
+
+      navigate('/',{state : {from : 'login'}});
+
+     (replace 옵션 , 뒤로가기 히스토리에 남기지 않음)
+
+     navigate('/login', {replace: true})
+      -> {replace: true }를 추가하면 현재 페이지를 히스토리에서 대체합니다.
+      -> 뒤로가기를 눌러도 이전 페이지로 돌아갈 수 없게 됨
+      -> 보통 로그인 성공 후 리다이렉트, 권한 없는 페이지 접근 시 로그인으로 강제 이동 같은
+         경우에 사용됩니다.
+
+     - 4. 레이아웃에서 받기
+
+      import {useLocation} from "react-router-dom";
+
+      const location = useLocation(); // useLocation() 훅은 현재 URL정보를 가지고 온다.
+
+      {
+          pathname: "/current-path",  // 현재 경로
+          search: "?query=abc",       // 쿼리 스트링
+          hash: "#top",               // 해시
+          state: { ... },             // navigate()에서 전달한 상태
+          key: "randomKey123"         // location 고유 식별자
+      }
+
+      const { userData } = location.state || {}
+      -> location.state가 없을 경우 대비로 || 을 사용하여 없다면 {} 실행해 undefined 에러 방지
+
+- 2. Layout / Header 관련
+
+     - Layout에서 userData를 받아서 Header에 표시하는 방법
+     - 로그인 상태에 따라 로그인 링크 또는 username 표시
+     - 로그아웃 버튼 만들기 및 클릭 시 상태 초기화 + 페이지 이동
+
+     {userData ? <p>userData.Objectname</p> : <Link to="signin">로그인</Link>}
+
+     - 부모 -> 자식으로 props 전달
+     - 로그인 상태에 따라 UI 조건부 렌더링
+
+     const [userData, setUserData] = useState(location.state?.userData || null);
+
+     const handleLogout = () => {
+     setUserData(null); // 로그아웃을 한다면 레이아웃에서 useState값을 null로 바꾸고
+     navigate("/"); // 초기화면으로 이동
+     };
+
+     - 옵셔널 체이닝 사용(location.state?.userData || null)
+       - location.state가 존재하면 (location.state.userData 실행) 그 안의 userData를 가져옴
+       - 없으면 null 실행
+
+---
+
+## 4. 정리 (Summarize)
+
+- 학습한 내용을 한 문장 또는 핵심 포인트로 정리하고 느낀 점이나 다음 과제를 적으세요.
+
+설명)
+
+- 로그인할때 useNavigate()로 페이지 이동, navigate('/',{state : {from : 'login'}}); 로 값 전달
+- 항상 어떠한 값이 변경될때 useState사용한다고 생각하기
+- const { userData } = location.state || {} 구조분해 할당 이렇게 사용하면
+  location.state.userData 이다.
+- 데이터 받을 때는 useNavigate()가 전달한 값을 useLocation()으로 데이터를 받아야 한다.
+
+- useNavigate() -> 브라우저에서 페이지 이동 + 상태 전달
+- useLocation() -> 브라우저에서 현재 URL과 상태 확인
+
+- 이거 기본 라우터 방법 (SPA) 사용하는 건데 서버 사이드 랜더링 할때는 못쓴다(참고)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
