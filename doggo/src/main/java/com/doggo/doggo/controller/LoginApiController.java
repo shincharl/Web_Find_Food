@@ -3,11 +3,13 @@ package com.doggo.doggo.controller;
 import com.doggo.doggo.Service.LoginService;
 import com.doggo.doggo.dto.LoginRequestDto;
 import com.doggo.doggo.dto.LoginResponseDto;
+import com.doggo.doggo.dto.RegisterDto;
 import com.doggo.doggo.entity.Member;
 import com.doggo.doggo.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,7 +24,7 @@ public class LoginApiController {
         this.loginService = loginService;
     }
 
-    // 2. 서비스에 데이터 처리 요청 및 반환
+    // 2. 서비스에 데이터 처리 요청 및 반환 (로그인)
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(@RequestBody LoginRequestDto request){
 
@@ -33,5 +35,17 @@ public class LoginApiController {
         return ResponseEntity.ok(response);
 
     }
+    
+    // 2. 서비스에 데이터 처리 요청 및 반환 (회원가입)
+    @Transactional
+    @PostMapping("/signup")
+    public ResponseEntity<RegisterDto> register(@RequestBody RegisterDto registerDto){
+
+        RegisterDto regist_Dtos = loginService.signup(registerDto);
+
+        // entity -> dto 변환 후 값 반환
+        return ResponseEntity.ok(regist_Dtos);
+    }
+
 
 }

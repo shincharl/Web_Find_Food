@@ -425,3 +425,60 @@ https://hstory0208.tistory.com/entry/Spring-Lombok%EB%A1%AC%EB%B3%B5%EC%9D%B4%EB
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+2025/08/24
+
+오늘 개발 및 학습한 중요한 내용 정리
+
+(프론트 엔드)
+
+1. React에서 Form과 버튼 동작 구분
+
+- form 태그 내부의 <button>은 기본적으로 type="submit" -> form의 onSubmit 실행
+- type = "button"을 줘야 단순 클릭 이벤트만 발생 -> form 제출 X
+
+** 로그인 화면의 회원가입 버튼 : type="button" (화면 전환용)
+** 회원가입 화면의 회원가입 버튼 : type = "submit" (데이터 제출용)
+
+2.  React 상태 관리로 화면 전환 제어
+
+- 상태 변수(isLogin / chnage)를 두고, 값에 따라 다른 화면 렌더링
+
+{isLogin ? <LoginForm /> : <SignupForm />}
+
+-> 조건부 렌더링(Conditional Rendering) + 상태(State)로 페이지 전환 없이 화면을 바꿀 수 있다.
+-> 실제 라우팅 없이도 UX 개선 가능
+
+3. 에러 처리 & 사용자 경험(UX)
+
+- 서버에서 내려온 에러 메시지를 error.response.data.message로 처리
+- 서버가 죽었거나 네트워크 문제일 경우 fallback => 네트워크 에러
+
+-> 클라이언트 개발에서 에러 처리를 구체적으로 분리하면 UX가 크게 향상된다.
+-> form 입력값 검증(프론트) + 서버 검증(백엔드) 모두 필요하다.
+
+(백엔드)
+
+1. @Transactional
+
+- @Transactional은 JPA 전용이 아닌 Spring 프레임워크 기능
+- 예외 발생 -> Rollback, 정상 종료 -> Commit
+
+2. 전역적으로 CORS(Cross-Origin Resource Sharing) 정책 설정
+
+![alt text](image-12.png)
+
+3. @RequestBody
+
+- Spring MVC에서 클라이언트가 보낸 HTTP 요청 본문(body)을 자바 객체로 변환해주는 역할을 함
+- 클라이언트에서 POST, PUT 요청을 보낼 때
+- 요청 데이터가 JSON 형식일 경우
+
+![alt text](image-13.png)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
