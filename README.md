@@ -482,3 +482,71 @@ https://hstory0208.tistory.com/entry/Spring-Lombok%EB%A1%AC%EB%B3%B5%EC%9D%B4%EB
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+
+25/08/26
+
+React + MUI 예약 폼 만들기 : 달력 & 시간 선택 입력창 구현
+
+1. 페이지 구조
+
+- 페이지는 크게 두 부분으로 나눈다.
+
+  1.  왼쪽 이미지 영역
+      - 메인 이미지와 텍스트 오버레이
+  2.  오른쪽 예약 폼 영역
+      - 날짜 선택 입력
+      - 시간 선택 입력 (MUI TimePicker 사용)
+      - 강아지 정보 입력
+      - 제출 버튼
+
+- Flexbox로 좌우 배치했고, 화면이 작아지면 세로로 쌓이도록 반응형 처리했습니다.
+
+![alt text](image-14.png)
+
+2. 날짜 선택 입력창 (Calendar)
+
+- React에서 달력을 구현할 때는 직접 만든 CalendarBasic 컴포넌트를 사용했습니다.
+- 외부 클릭시 달력 자동 닫기 기능은 useState + onClick으로 간단히 처리했습니다.
+
+![alt text](image-15.png)
+
+- 클릭하면 달력이 나타나고, 외부 클릭 시 닫히도록 구현
+- position: absolute + z-index로 팝업 겹침 문제 방지
+
+3. 시간 선택 입력창(MUI TimePicker)
+
+- MUI TimePicker를 사용하면 AM/PM 선택과 숫자 입력이 깔끔하게 처리됩니다.
+- 한글 로케일 적용과 placeholder, 입력 제한 등도 가능
+- 버전 업그레이드로 인한 오류가 발생할 수 있음 V4로 코드 짯다가 5시간 허비...
+
+![alt text](image-16.png)
+
+- LocalizationProvider + AdapterDateFns로 한국어 로케일 적용
+
+- slotProps.textField를 활용하면 placeholder, width, 입력 제한 설정 가능
+
+- 드롭다운과 숫자 입력 스타일 문제 거의 없음 → MUI 내부 스타일 사용
+
+4. 숫자 입력 제한 (견종 나이)
+
+![alt text](image-17.png)
+
+✅ 오늘 핵심 정리
+
+1. FlexBox로 좌우 레이아웃 구성 -> 반응형 대응
+2. 달력 클릭 시 팝업 표시 + 외부 클릭 시 자동 닫기
+3. MUI TimePicker 활용 -> 숫자 입력과 AM/PM 드롭다운 처리 간편
+4. 숫자 입력 제한 -> 정규식 /^\d\*$/ 사용
+
+어려웠던 점
+
+1. 어떤 리액트 라이브러리가 있는지 잘모름 (즉시 찾아봐서 적용하는 점....)
+2. useState 넘기고 받고 하는 흐름 버벅거림
+3. 아무래도 프로젝트를 여러개 해야 이런점들이 개션될 것이라고 생각 됨
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
