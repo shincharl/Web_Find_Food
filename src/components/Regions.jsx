@@ -65,12 +65,15 @@ const Regions = ({ onClose, onConfirm }) => {
             <div className={styles.regionsContainer}>
               {regions.map((region) => (
                 <button
+                  type="button"
                   key={region}
                   className={`${styles.regionButton} ${selected === region ? styles.active : ""}`}
-                  onClick={() => handleSelect(region)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleSelect(region)}}
                 >
                   {region}
-                </button>   
+                </button>
               ))}
             </div>
 
@@ -78,9 +81,10 @@ const Regions = ({ onClose, onConfirm }) => {
               <button onClick={onClose} className={styles.closeBtn}>
                 닫기
               </button>
-              <button 
-                className={styles.nextBtn} 
-                onClick={() => selected && handleNext()} 
+              <button
+                type="button"
+                className={styles.nextBtn}
+                onClick={() => selected && handleNext()}
                 disabled={!selected}
               >
                 다음
@@ -97,6 +101,7 @@ const Regions = ({ onClose, onConfirm }) => {
             <div className={styles.regionsContainer}>
               {dongMap[selected]?.map((dong) => (
                   <button
+                    type="button"
                     key={dong}
                     className={`${styles.regionButton} ${selectedDong === dong ? styles.active : ""}`}
                     onClick = {() => handleSelect_Dong(dong)}
