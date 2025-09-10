@@ -9,7 +9,8 @@ import Movingdistance from "../components/Movingdistance"; // 산책 코스 모�
 import DogEvent from "../components/DogEvent";     // 이벤트 선택 모달
 
 import { useForm, Controller } from "react-hook-form";
-import { NumericFormat } from "react-number-format";
+import { NumericFormat, PatternFormat } from "react-number-format";
+import {dataSend} from "../components/Datasend";
 
 const Home = () => {
   const [step, setStep] = useState(1);
@@ -27,6 +28,9 @@ const Home = () => {
   const [totalDistance, setTotalDistance] = useState(0);
   const [onevent, setOnEvent] = useState("");
   const [showModal, setShowModal] = useState(false);
+
+  // 예약 데이터 전송 state
+  const [isCompleted, setIsCompleted] = useState(false);
 
   // react-hook-form
   const {
@@ -114,7 +118,13 @@ const Home = () => {
           <input
             type="text"
             placeholder="강아지 종류"
-            {...register("dogType", { required: "강아지 종류를 입력해주세요" })}
+            {...register("dogType", 
+              { required: "강아지 품종를 입력해주세요",
+                pattern: {
+                  value : /^[가-힇]+$/, // 한글만 허용
+                  message: "잘못된 기입 입니다."
+                },
+               })}
           />
           {errors.dogType && <span style={{ color: "red" }}>{errors.dogType.message}</span>}
 
@@ -131,7 +141,13 @@ const Home = () => {
 
           <input type="text" placeholder="마리 수, 기타 (선택사항)" />
 
-          <button type="submit">다음</button>
+          <button type="submit"
+                  onClick={() => {
+                    if(!selected_Calender || !selected_Clock){
+                      alert("정보(날짜, 시간 필수)를 모두 입력 해주세요.");
+                      return;
+                    }
+                  }}>다음</button>
         </form>
       )}
 
@@ -143,21 +159,42 @@ const Home = () => {
           {/* 예약자 성명 */}
           <input
             type="text"
-            placeholder="예약자 성명"
-            {...register("reservationName", { required: "예약자 성명을 입력해주세요" })}
+            placeholder="예약자 성명 또는 닉네임(한글)"
+            {...register("reservationName", { 
+              required: "예약자 성명 또는 닉네임(한글)을 입력해주세요",
+              pattern: {
+                value: /^[가-힇]+$/, // 한글만 허용
+                message: "성명이 잘못 입력 되었습니다.", 
+              },
+            })}
           />
           {errors.reservationName && <span style={{ color: "red" }}>{errors.reservationName.message}</span>}
 
           {/* 전화번호 */}
-          <Controller
-            name="phone"
-            control={control}
-            rules={{
-              required: "전화번호를 입력해주세요",
-              pattern: { value: /^010-\d{4}-\d{4}$/, message: "전화번호 형식이 올바르지 않습니다" },
-            }}
-            render={({ field }) => <input {...field} placeholder="전화번호 입력" />}
-          />
+            <Controller
+              name="phone"
+              control={control}
+              rules={{
+                required: "전화번호를 입력해주세요",
+                pattern: {
+                  value: /^010-\d{4}-\d{4}$/,
+                  message: "전화번호 형식이 올바르지 않습니다",
+                },
+              }}
+              render={({ field }) => (
+                <PatternFormat
+                  format="###-####-####"
+                  allowEmptyFormatting={false}
+                  mask="_"
+                  placeholder="전화번호 입력"
+                  value={field.value ?? undefined} // react-hook-form 값 표시
+                  onValueChange={(values) => {
+                    field.onChange(values.formattedValue); // 하이픈 포함된 값 저장
+                  }}
+                  onBlur={field.onBlur}
+                />
+              )}
+            />
           {errors.phone && <span style={{ color: "red" }}>{errors.phone.message}</span>}
 
           {/* 지역 선택 */}
@@ -204,7 +241,7 @@ const Home = () => {
           {/* 이벤트 선택 */}
           <input
             type="text"
-            placeholder="이벤트 선택"
+            placeholder="이벤트 선택 (필수 X)"
             readOnly
             value={onevent}
             onClick={(e) => {
@@ -241,7 +278,7 @@ const Home = () => {
             <strong>견종 나이:</strong> {getValues("dogAge") || "-"}
           </div>
           <div>
-            <strong>예약자 성명:</strong> {getValues("reservationName") || "-"}
+            <strong>예약자 성명(닉네임):</strong> {getValues("reservationName") || "-"}
           </div>
           <div>
             <strong>전화 번호:</strong> {getValues("phone") || "-"}
@@ -255,12 +292,33 @@ const Home = () => {
           <div>
             <strong>이벤트 선택:</strong> {onevent || "-"}
           </div>
+          <span style={{color : "red" ,  fontWeight : "bold" }}>잘못된 예약은 관리자에 의해 취소될수 있습니다.</span>
 
           <div style={{ marginTop: 20 }}>
-            <button onClick={handlePrev} style={{ marginRight: 12 }}>
+            <button onClick={handlePrev} style={{ marginRight: 12}}>
               이전
             </button>
-            <button onClick={() => alert("예약이 완료되었습니다!")} style={{ backgroundColor: "#4caf50", color: "#fff" }}>
+            <button
+                  style={{ backgroundColor: "#4caf50", color: "#fff" }}
+                      onClick={() => {
+                            if (isCompleted) return; // 중복 방지
+                            setIsCompleted(true);
+                            dataSend({
+                              selected_Calender,
+                              selected_Clock,
+                              dogType: getValues("dogType"),
+                              dogage: getValues("dogAge"),
+                              name: getValues("reservationName"),
+                              phone: getValues("phone"),
+                              location: selectedRegion + selectedDong,
+                              totalDistance,
+                              event: onevent,
+                              onSuccess: () => {
+                                alert("예약이 완료되었습니다!");
+                              },
+                            });
+                          }}
+                      >
               완료
             </button>
           </div>

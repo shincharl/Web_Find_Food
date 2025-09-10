@@ -701,3 +701,66 @@ React + react-hook-form + 모달 컴포넌트 + 상태 관리
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/09/10
+
+(1). 전화번호 입력 폼 변경 및 개선
+https://ray.so/tJGixog
+
+- NumbericFormat을 사용했을때 사용자 전화번호를 입력받아 출력할때 하이픈 오류가 있어서 PatternFormat을 사용했을때 오류를 없앨 수 있었다.
+
+PatternFormat
+
+1. format
+
+- 입력 포맷 지정
+- ###-####-### -> 하이픈 포함 11자리 숫자
+
+2. mask
+
+- 빈 자리 표시, \_로 나타남
+
+3. value={filed.value ?? undefined}
+
+- react-hook-form의 값과 연결
+- 값이 없으면 undefined 처리
+
+4. onValueChnage
+
+- 사용자가 입력할 때 호출
+- values.formattedValue -> 하이픈 포함된 최종 문자열을 form에 저장
+- 여기서 field.onChange() 호출해야 react-hook-form에서 값 인식
+
+5. onBlur
+
+- focus 잃었을 때 호출
+- 검증 트리거용
+
+(2). 최종 데이터 서버전송(나중에 조회 계시판 만들 때 사용)
+
+문제점
+
+- 예약 시 2중 예약 발생 문제
+- 함수 수정 중 Invalid Hook Call 오류
+- Webpack import 오류
+
+https://ray.so/lmnwL7W
+
+- 처음에 컴포넌트 형태로 값을 넘기면서 최종 submit 할때랑, DataSend 호출하면서
+  중복 데이터 전송 확인
+
+https://ray.so/oacBy3Y
+
+- 컴포넌트를 함수로 바꾸면서 버튼을 클릭 시 해당 dataSend 함수로 객체를 전송하도록
+  코드 수정
+
+- 데이터 정상 송신 및 서버 POST 수신 확인
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
