@@ -1,15 +1,19 @@
 package com.doggo.doggo.controller;
 
 import com.doggo.doggo.dto.ReservationDTO;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.doggo.doggo.entity.Reservation;
+import com.doggo.doggo.repository.reservationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class ReservationController {
+    @Autowired
+    private reservationRepository reservationRepository;
 
     @PostMapping("/reservation")
     public String makeReservation(@RequestBody ReservationDTO reservation){
@@ -23,6 +27,19 @@ public class ReservationController {
         System.out.println("거리: " + reservation.getTotalDistance());
         System.out.println("이벤트: " + reservation.getEvent());
 
+        // 1. DTO를 엔티티로 변환
+        Reservation reservations = reservation.toEntity();
+        System.out.println(reservations.toString());
+
+        // 2. 리파지터리로 엔티티를 DB에 저장
+        Reservation saved = reservationRepository.save(reservations);
+        System.out.println(saved.toString());
+
         return "예약 완료";
+    }
+
+    @GetMapping("/allReservation")
+    public List<Reservation> index(){
+        return reservationRepository.findAll();
     }
 }

@@ -38,10 +38,10 @@ const Header = ({ toggleSidebar, userData, onLogout }) => {
             {/* 내비게이션 메뉴 */}
             <ul className="navbar-nav d-flex flex-row mb-0">
               <li className="nav-item me-3">
-                <a className="nav-link active" aria-current="page" href="/">예약확인</a>
+                <Link to="/reservation" className="nav-link active">예약</Link>
               </li>
               <li className="nav-item me-3">
-                <Link to="/reservation" className="nav-link active">예약</Link>
+                <Link to="/allReservation" className="nav-link active">예약확인</Link>
               </li>
                <li className="nav-item me-3">
                 <Link to="/service" className="nav-link active">서비스 요금</Link>

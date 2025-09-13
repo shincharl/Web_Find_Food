@@ -764,3 +764,18 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/09/13
+
+- 모든 예약 목록 백단(Spring boot 넘겨서 DB 저장 후 예약 확인 메뉴에 데이터 넘기기)
+- MVC 패턴 이용해서 넘기고, @RestController 사용으로 JSON 형태로 백단에서 데이터 전송
+- 내일 해야하는 것 : 예약 목록 리스트 만들기(로그인한 관리자가 관리할 수 있도록 관리자 페이지 만들기)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
