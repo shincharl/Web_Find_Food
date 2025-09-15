@@ -46,8 +46,8 @@ const Header = ({ toggleSidebar, userData, onLogout }) => {
                <li className="nav-item me-3">
                 <Link to="/service" className="nav-link active">서비스 요금</Link>
               </li>
-              <li className="nav-item">
-                <span className="nav-link disabled" aria-disabled="true">QnA</span>
+              <li className="nav-item me-3">
+                <Link to="/qna" className="nav-link active">QnA</Link>
               </li>
             </ul>
           </div>

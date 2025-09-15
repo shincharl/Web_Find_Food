@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import styles from "../css/Allreservation.module.css";
 
 const Allreservation = () => {
 
@@ -16,25 +17,33 @@ const Allreservation = () => {
     }, []);
 
     return(
-        <div>
-            <h1>예약 목록</h1>
-            <ul>
+       <div className={styles.container}>
+            <h1 className={styles.title}>예약목록</h1>
+            <div className={styles.list}>
                 {reservations.map((reservation) => (
-                    <li key = {reservation.id}>
-                        {reservation.calender}
-                        {reservation.clock}
-                        {reservation.dog_type}
-                        {reservation.dog_age}
-                        {reservation.name}
-                        {reservation.phone}
-                        {reservation.location}
-                        {reservation.distance}
-                        {reservation.event}
-                    </li>
+                    <div key={reservation.id} className={styles.card}>
+                        <div className={styles.content}>
+                            <h3 className={styles.name}>{reservation.name}
+                                {" "}<input type="checkbox" className={styles.checkbox} />
+                            </h3>
+                            <p className={styles.text}>
+                               📅 {reservation.calender} ⏰ {reservation.clock}
+                            </p>
+                            <p className={styles.text}>
+                               🐶 {reservation.dog_type} ({reservation.dog_age}살)
+                            </p>
+                            <p className={styles.text}>📞 {reservation.phone}</p>
+                            <p className={styles.text}>
+                                📍 {reservation.location} ({reservation.distance} km)
+                            </p>
+                            <p className={styles.text}>🎉 {reservation.event}</p>
+                        </div> 
+                    </div>
                 ))}
-            </ul>
-        </div>
+            </div>
+       </div>
     );
-}
+};
+
 
 export default Allreservation;
