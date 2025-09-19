@@ -795,3 +795,30 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/09/19
+
+- QnA 게시판 작업 완료, 백엔드 Qna 질문 DB 저장 기능 제작 완료
+
+- 웹사이트 예약목록 수정을 위한 비밀번호 저장 기능 제작 완료, 수정하기 버튼도 만들고
+  비밀번호 불러오기 까지 했는데, 웹 브라우저에서 비밀번호를 비교해서 보안 문제성이 심각할것 같아 수정 필요성 느낌...
+
+- 중구 난방으로 라이브러리 덕지덕지 붙어서 사용해서 디자인 패턴 정립 필요성 느낌 Next.js 프레임워크
+  공부해서 해당 프레임워크 패턴대로 다음 프로젝트는 개발 들어가고, 리덕스도 사용하기
+  (스토어에서 데이터 전체 관리)
+
+- 백단은 Mapper 사용해서 해당 Mpper 기능 페이지에서 DTO <-> Entity 변환 전체 관리?
+  할수 있지 않을까? 이거 한번 고려해서 다음 프로젝트때 집어넣어 보기
+
+- 관리자 로그인 했을때 관리자 페이지로 넘어갈 데이터 : Qna 목록들, 예약목록 수락 및 삭제 기능
+
+- 예약목록 수락하면 사용자는 만료되서 수정하기 버튼을 클릭해도 예약 확정되었습니다. 해야함
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)

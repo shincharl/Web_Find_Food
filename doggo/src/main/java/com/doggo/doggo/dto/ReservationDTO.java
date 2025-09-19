@@ -10,6 +10,7 @@ public class ReservationDTO {
     private String selected_Calender;
     private String selected_Clock;
     private String dogType;
+    private String password;
     private int dogage;
     private String name;
     private String phone;
@@ -18,6 +19,6 @@ public class ReservationDTO {
     private String event;
 
     public Reservation toEntity() {
-        return new Reservation(null, selected_Calender, selected_Clock, dogType, dogage, name, phone, location, totalDistance, event);
+        return new Reservation(null, selected_Calender, selected_Clock, dogType, password, dogage, name, phone, location, totalDistance, event);
     }
 }

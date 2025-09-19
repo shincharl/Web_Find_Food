@@ -47,6 +47,7 @@ const Home = () => {
       dogType: "",
       dogAge: "",
       addressDong: "",
+      password: "",
     },
   });
 
@@ -139,7 +140,14 @@ const Home = () => {
           />
           {errors.dogAge && <span style={{ color: "red" }}>{errors.dogAge.message}</span>}
 
-          <input type="text" placeholder="마리 수, 기타 (선택사항)" />
+          <input type="password"
+                 placeholder="예약 변경 비밀번호"
+                 {...register("password", {
+                  required: "예약 변경 비밀번호를 입력해주세요",
+                  minLength: {value: 4, message: "비밀번호는 최소 4자리 이상 입력해주세요"},
+                 })} />
+
+          {errors.password && <span style={{color: "red"}}>{errors.password.message}</span>}
 
           <button type="submit"
                   onClick={() => {
@@ -277,6 +285,9 @@ const Home = () => {
           <div>
             <strong>견종 나이:</strong> {getValues("dogAge") || "-"}
           </div>
+           <div>
+            <strong>예약 수정 비밀번호</strong> {getValues("password") || "-"}
+          </div>
           <div>
             <strong>예약자 성명(닉네임):</strong> {getValues("reservationName") || "-"}
           </div>
@@ -308,6 +319,7 @@ const Home = () => {
                               selected_Clock,
                               dogType: getValues("dogType"),
                               dogage: getValues("dogAge"),
+                              password: getValues("password"),
                               name: getValues("reservationName"),
                               phone: getValues("phone"),
                               location: selectedRegion + selectedDong,

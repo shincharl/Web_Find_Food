@@ -20,6 +20,7 @@ public class ReservationController {
         System.out.println("날짜: " + reservation.getSelected_Calender());
         System.out.println("시간: " + reservation.getSelected_Clock());
         System.out.println("강아지 종류: " + reservation.getDogType());
+        System.out.println("비밀번호: " + reservation.getPassword());
         System.out.println("견종 나이: " + reservation.getDogage());
         System.out.println("예약자 이름: " + reservation.getName());
         System.out.println("전화번호: " + reservation.getPhone());
@@ -37,6 +38,9 @@ public class ReservationController {
 
         return "예약 완료";
     }
+
+
+
 
     @GetMapping("/allReservation")
     public List<Reservation> index(){

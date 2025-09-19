@@ -9,13 +9,14 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@ToString
 public class QnaDTO {
 
     private Long id; // DB에서 자동 생성된 ID
 
-    private String memo;
+    private String memo; // 사용자 메모 평가
+
+    private String satisfaction; // 사용자 라디오 평가
 
 
 }

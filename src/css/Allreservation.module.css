@@ -1,34 +1,35 @@
 .container {
-    max-width: "900px";
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f4f8;
-    min-height: 100vh;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #2c3e50;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;  /* 가로 중앙 정렬 */
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card {
     display: flex;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: stretch;
     background-color: #fff;
     border-radius: 12px;
-    padding: 15px 20px;
+    overflow: hidden;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    margin-bottom: 12px;
+    max-width: 1200px;   /* 카드 최대 너비 조정 */
+    min-width: 900px;    /* 카드 최소 너비 */
+    width: 100%;        /* 반응형 유지 */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .card:hover {
@@ -36,8 +37,13 @@
     box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
+/* 카드 내용 영역 */
 .content {
-    flex : 1;
+    flex: 1;
+    padding: 15px 20px;  /* 카드 안쪽 여백 확보 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .name {
@@ -47,8 +53,35 @@
     font-weight: 600;
 }
 
-.text{
+.text {
     margin: 3px 0;
     color: #555;
     font-size: 14px;
+}
+
+/* 오른쪽 버튼 wrapper */
+.rightButtonWrapper {
+    flex: 0 0 60px; /* 버튼 영역 너비 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4f46e5; /* 버튼 배경색 */
+    cursor: pointer;
+}
+
+/* 버튼 자체 스타일 */
+.rightButtonArea {
+    background: none; /* wrapper 배경색 사용 */
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    writing-mode: vertical-rl; /* 세로 텍스트 */
+    text-orientation: mixed;
+    padding: 8px 0;
+    transition: transform 0.2s;
+}
+
+.rightButtonWrapper:hover .rightButtonArea {
+    transform: scale(1.05);
 }

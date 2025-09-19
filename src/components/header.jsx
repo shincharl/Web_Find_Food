@@ -16,17 +16,17 @@ const Header = ({ toggleSidebar, userData, onLogout }) => {
             {userData ? (
               <>
                 <p style={{"margin-top" : "2%"}}>{userData.name}님 환영합니다!</p>
-                <span style={{"margin-left" : "20px"}}></span>
+                <span style={{marginLeft : "20px"}}></span>
                 <button className="btn btn-outline-danger ms-2" onClick={onLogout}>
                   로그아웃
                 </button>
-                <span style={{"margin-left" : "20px"}}></span>
+                <span style={{marginLeft : "20px"}}></span>
                 
               </>
             ) : (
               <>
-                <Link to="/signin">로그인</Link>
-                <span style={{"margin-left" : "20px"}}></span>
+                <Link to="/signin">관리자 로그인</Link>
+                <span style={{marginLeft : "20px"}}></span>
               </>
             )}
 
