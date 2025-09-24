@@ -20,7 +20,7 @@ export default function CalendarBasic({selected, setSelected, setOpen }){
     }, [setOpen]);
 
     return(
-        <div ref={wrapperRef} Style={{position : "relative"}}>
+        <div ref={wrapperRef} style={{position : "relative"}}>
             <DayPicker mode="single" selected={selected} onSelect={(date)=>{
                 setSelected(date); // 날짜 선택
                 setOpen(false); // 달력 닫기

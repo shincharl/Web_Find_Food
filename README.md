@@ -822,3 +822,37 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/09/24
+
+1. DOM 속성 오류 해결
+
+문제: Invalid DOM property 'Style'. Did you mean 'style'?
+원인: JSX에서 DOM 속성은 소문자 style 사용, 대문자 Style은 안됨.
+
+2. 예약 수정 페이지 제작 완료, 비밀번호 서버에서 확인 및 페이지 이동
+   보안 오류 정상화 완료
+
+3. 설계서가 없이 막 개발하다보니 코드가 여기저기 중구난방으로 저장이
+   된다.... 설계서의 중요도를 느낌 (코드가 복잡해짐)
+
+4. 리액트는 ${id}로 url 값 전송 스프링부트는 {id}로 매핑 한다.
+
+5. 해야할 것 관리자 페이지 만들기, 삭제 기능 만들기
+
+6. 개발 끝나면, 공모전 같은거 알아보기
+
+7. Spring Data JPA Projection 정리 완료
+
+- https://chamchicoder.tistory.com/247
+
+8. 다음 프로젝트 때는 doc 정리 기준 통일해서 올리기
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)

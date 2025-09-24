@@ -8,6 +8,7 @@ import Home from "./page/Home";
 import Service from "./page/Service";
 import Allreservation from "./page/Allreservation";
 import Qna from "./page/Qna";
+import Modify from "./page/Modify";
 //import Signup from "./page/Signup";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/allReservation" element={<Allreservation />} />
           <Route path="service" element={<Service />} />
           <Route path="qna" element={<Qna />} />
+          <Route path="modify/:id" element={<Modify />} />
         </Route>
         {/*중첩 라우트의 path는 절대 경로가 아닌 상대경로를 써야 한다.*/}
         <Route path="/signin" element={<Signin />} />

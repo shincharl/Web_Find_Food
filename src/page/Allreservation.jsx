@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import styles from "../css/Allreservation.module.css";
 
 const Allreservation = () => {
+
+     const navigate = useNavigate();
 
     const [reservations, setReservations] = useState([]);
 
@@ -17,8 +20,8 @@ const Allreservation = () => {
     }, []);
 
     // 수정하기 버튼 입력
-    const modify = (reservation) => {
-        //alert(reservation.password);
+    const modify = async (reservation) => {
+
        const inputPassword = prompt('등록하신 비밀번호를 입력해주세요');
 
        if(!inputPassword){
@@ -26,8 +29,18 @@ const Allreservation = () => {
             return;
        }
 
-
-    }
+       axios
+        .post(`http://localhost:8080/api/reservation/${reservation.id}`, {password: inputPassword})
+        .then((res) => {
+            if(res.data === "OK"){
+                navigate(`/modify/${reservation.id}`);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            alert("비밀번호가 올바르지 않습니다.");
+        });
+    };
 
     return(
        <div className={styles.container}>
@@ -44,7 +57,7 @@ const Allreservation = () => {
                                📅 {reservation.calender} ⏰ {reservation.clock}
                             </p>
                             <p className={styles.text}>
-                               🐶 {reservation.dog_type} ({reservation.dog_age}살)
+                               🐶 {reservation.dogType} ({reservation.dogAge}살)
                             </p>
                             <p className={styles.text}>📞 {reservation.phone}</p>
                             <p className={styles.text}>

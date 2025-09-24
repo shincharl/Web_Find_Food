@@ -318,7 +318,7 @@ const Home = () => {
                               selected_Calender,
                               selected_Clock,
                               dogType: getValues("dogType"),
-                              dogage: getValues("dogAge"),
+                              dogAge: getValues("dogAge"),
                               password: getValues("password"),
                               name: getValues("reservationName"),
                               phone: getValues("phone"),

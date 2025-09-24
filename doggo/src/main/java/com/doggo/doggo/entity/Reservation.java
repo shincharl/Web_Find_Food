@@ -4,29 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @ToString
 @Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
-
-    protected Reservation() {}
-
-    public Reservation(Long id, String calender, String clock, String dog_type, String password, int dog_age, String name, String phone, String location, int distance, String event) {
-        this.id = id;
-        this.calender = calender;
-        this.clock = clock;
-        this.dog_type = dog_type;
-        this.password = password;
-        this.dog_age = dog_age;
-        this.name = name;
-        this.phone = phone;
-        this.location = location;
-        this.distance = distance;
-        this.event = event;
-    }
 
     @Id
     @GeneratedValue
@@ -39,13 +25,13 @@ public class Reservation {
     private String clock;
 
     @Column
-    private String dog_type;
+    private String dogType;
 
     @Column
     private String password;
 
     @Column
-    private int dog_age;
+    private int dogAge;
 
     @Column
     private String name;
