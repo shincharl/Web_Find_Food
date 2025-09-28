@@ -103,5 +103,16 @@ public class ReservationController {
 
     }
 
+    @PostMapping("/reservation/{id}/delete")
+    public ResponseEntity<String> deleteReservation(@PathVariable Long id){
+
+        Reservation reservation = reservationRepository.findById(id).orElseThrow(() -> new RuntimeException("예약 없음"));
+
+        // 해당 id값을 가진 데이터 삭제
+        reservationRepository.delete(reservation);
+
+        return ResponseEntity.ok("OK");
+    }
+
 
 }

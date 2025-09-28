@@ -33,9 +33,11 @@ const Signin = () => {
     }
 
     try {
-      const res = await login(value1, password1);
+      const res = await login(value1, password1); // 성공한 관리자의 이름 나온다.
       console.log('로그인 성공: ', res.data);
+      
       navigate("/", { state: { userData: res.data } });
+      
     } catch (error) {
       const message = error.response?.data?.message || "로그인 실패";
       setErrorMessage(message);

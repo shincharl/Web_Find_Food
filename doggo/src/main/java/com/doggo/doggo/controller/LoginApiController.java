@@ -31,6 +31,11 @@ public class LoginApiController {
         // 서비스로 값 할당 후 응답 dto로 반환 후 재할당
         LoginResponseDto response = loginService.login(request.getEmail(), request.getPassword());
 
+        // 로그인 실패
+        if(response == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
         // entity -> dto 변환 후 값 반환
         return ResponseEntity.ok(response);
 

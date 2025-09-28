@@ -1,6 +1,17 @@
 import Styles from '../css/header.module.css';
 import {Link} from 'react-router-dom';
-const Header = ({ toggleSidebar, userData, onLogout }) => {
+const Header = ({ toggleSidebar, userData, onLogout, timeLeft }) => {
+
+  // 로그인 남은 시간 ms -> 분:초 변환
+  const formatTime = (ms) => {
+    if (!ms) return "00:00";
+    const totalSeconds = Math.floor(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes.toString().padStart(2,"0")}:${seconds.toString().padStart(2,"0")}`;
+  }
+
+
   return (
     <>
       <nav className={`navbar navbar-expand-lg bg-body-tertiary ${Styles.navbarSticky}`}>
@@ -15,8 +26,14 @@ const Header = ({ toggleSidebar, userData, onLogout }) => {
           {/* 로그인시 사용자 정보 표시 */}
             {userData ? (
               <>
-                <p style={{"margin-top" : "2%"}}>{userData.name}님 환영합니다!</p>
+                <p style={{"marginTop" : "2%"}}>
+                  {userData.name}님 환영합니다! &nbsp;
+                  <span style={{ color: "red", fontWeight: "bold"}}>
+                      {formatTime(timeLeft)}
+                  </span>
+                </p>
                 <span style={{marginLeft : "20px"}}></span>
+                
                 <button className="btn btn-outline-danger ms-2" onClick={onLogout}>
                   로그아웃
                 </button>
@@ -38,7 +55,7 @@ const Header = ({ toggleSidebar, userData, onLogout }) => {
             {/* 내비게이션 메뉴 */}
             <ul className="navbar-nav d-flex flex-row mb-0">
               <li className="nav-item me-3">
-                <Link to="/reservation" className="nav-link active">예약</Link>
+                <Link to="/masterpage" className="nav-link active">관리페이지</Link>
               </li>
               <li className="nav-item me-3">
                 <Link to="/allReservation" className="nav-link active">예약확인</Link>

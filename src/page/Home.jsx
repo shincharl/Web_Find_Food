@@ -327,6 +327,7 @@ const Home = () => {
                               event: onevent,
                               onSuccess: () => {
                                 alert("예약이 완료되었습니다!");
+                                window.location.reload();
                               },
                             });
                           }}

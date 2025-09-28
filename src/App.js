@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./page/Layout";
 import Signin from "./page/Signin";
-import Reservation from "./page/Reservation";
 import Home from "./page/Home";
 import Service from "./page/Service";
 import Allreservation from "./page/Allreservation";
 import Qna from "./page/Qna";
 import Modify from "./page/Modify";
+import MasterPage from "./page/MasterPage";
 //import Signup from "./page/Signup";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} /> {/*기본 홈 페이지*/}
-          <Route path="reservation" element={<Reservation />} />
+          <Route path="masterpage" element={<MasterPage />} />
           <Route path="/allReservation" element={<Allreservation />} />
           <Route path="service" element={<Service />} />
           <Route path="qna" element={<Qna />} />

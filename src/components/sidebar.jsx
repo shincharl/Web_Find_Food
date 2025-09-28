@@ -21,7 +21,7 @@ const Sidebar = ({isOpen, closeSidebar, userData, onLogout}) => {
                     {/* 로그인시 사용자 정보 표시 */}
                         {userData ? (
                           <>
-                            <p style={{"margin-top" : "2%"}}>{userData.name}님 환영합니다!</p>
+                            <p style={{"marginTop" : "2%"}}>{userData.name}님 환영합니다!</p>
                             <span style={{marginLeft : "20px"}}></span>
                             <button className="btn btn-outline-danger ms-2" onClick={onLogout}>
                                 로그아웃

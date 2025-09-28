@@ -18,9 +18,10 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     margin-bottom: 12px;
     max-width: 1200px;   /* 카드 최대 너비 조정 */
-    min-width: 900px;    /* 카드 최소 너비 */
+    min-width: 750px;    /* 카드 최소 너비 */
     width: 100%;        /* 반응형 유지 */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
 }
 
 .title {
@@ -61,27 +62,40 @@
 
 /* 오른쪽 버튼 wrapper */
 .rightButtonWrapper {
-    flex: 0 0 60px; /* 버튼 영역 너비 */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4f46e5; /* 버튼 배경색 */
-    cursor: pointer;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 0 15px 15px 0;
 }
 
-/* 버튼 자체 스타일 */
+/* 공통 버튼 스타일 */
 .rightButtonArea {
-    background: none; /* wrapper 배경색 사용 */
+    background: #4f46e5; /* 수정하기 색 */
     color: white;
     border: none;
     font-weight: bold;
-    font-size: 14px;
-    writing-mode: vertical-rl; /* 세로 텍스트 */
-    text-orientation: mixed;
-    padding: 8px 0;
-    transition: transform 0.2s;
+    font-size: 16px; /*글자 크기 16px*/
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.rightButtonWrapper:hover .rightButtonArea {
+.rightButtonArea:hover {
     transform: scale(1.05);
+    background: #4338ca;
+}
+
+.deleteButton {
+    background: #f44336;
+}
+
+.deleteButton:hover {
+    background: #d32f2f;
+}
+
+.deleteButton:active {
+    background: #b71c1c;
 }

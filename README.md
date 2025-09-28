@@ -856,3 +856,50 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/09/28
+
+1. 예약 취소 기능 제작 완료
+
+2. 관리자 페이지 구성 & 로그인 체크 개발 완료
+
+- 관리자 페이지 예시 구성
+  (예약관리, 사용자 관리, 통계, 설정, QnA 관리)
+
+- 로그인 체크 방법
+  (useOutletContext 또는 props로 로그인 정보 전달)
+  (로그인 안 되어 있으면 alert 후 홈 또는 로그인 페이지로 이동)
+
+- 로그인 상태 관리
+  (useState로 상태 관리)
+  (localStorage에 로그인 정보 저장 -> 새로고침해도 로그인 유지)
+  (Layout에서 전역처럼 관리 -> 모든 페이지 공통 적용 -> 리덕스로 공통 데이터 관리하는게 편함)
+
+3. 로그인 타이머 개발 완료
+
+- 로그인 유지 시간을 관리하기 위해 타이머 필요
+
+구현 방식
+
+- 로그인 시 localStorage에 만료 시간 저장
+- useEffect로 1초 간격 setInterval 실행 -> 남은 시간 계산
+- 시간이 다 되면 자동 로그아웃
+- 새로고침해도 남은 시간 유지 가능
+- 남은 시간을 분:초 형태로 표시 가능
+
+주의할점
+
+- localStorage 데이터 타입 : 문자열만 저장 가능
+
+  -> 객체는 JSON.stringify (객체를 문자열로 변환) / JSON.parse (문자열을 객체로 변환) 필요
+
+4. 기타 로그인 버그, 페이지 이동 버그 , 푸터 디자인 바꾸기 적용 완료
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)

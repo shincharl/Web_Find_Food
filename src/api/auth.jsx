@@ -7,8 +7,15 @@ const apiClient = axios.create({
 
 /* 로그인 시도 axios */
 
-export const login = (email, password) => {
-    return apiClient.post('/login', {email, password});
+export const login = async (email, password) => {
+
+    try {
+        const res = await apiClient.post('/login', {email, password});
+        return res;   
+    } catch (error) {
+        throw error;
+    }
+
 };
 
 /* 회원가입 시도 axios */

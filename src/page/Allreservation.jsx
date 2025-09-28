@@ -42,6 +42,30 @@ const Allreservation = () => {
         });
     };
 
+    // 삭제하기 버튼 입력
+    const deletes = (reservation) => {
+
+        const inputPassword = prompt('등록하신 비밀번호를 입력해주세요');
+
+        if(!inputPassword){
+            alert('잘못된 입력입니다.');
+            return;
+        }
+
+        axios
+          .post(`http://localhost:8080/api/reservation/${reservation.id}/delete`, {password : inputPassword})
+          .then((res) => {
+            if(res.data === "OK"){
+                alert("정상적으로 예약이 취소 되었습니다.");
+                window.location.reload();
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+            alert("비밀번호가 올바르지 않습니다.");
+          });
+    };
+
     return(
        <div className={styles.container}>
             <h1 className={styles.title}>예약목록</h1>
@@ -68,6 +92,9 @@ const Allreservation = () => {
                          <div className={styles.rightButtonWrapper}>
                                 <button className={styles.rightButtonArea} onClick={() => modify(reservation)}>
                                     수정하기
+                                </button>
+                                <button className={`${styles.rightButtonArea} ${styles.deleteButton}`} onClick={() => deletes(reservation)}>
+                                    삭제하기
                                 </button>
                             </div>
                     </div>
