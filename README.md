@@ -903,3 +903,29 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+25/10/04
+
+1. 관리자 페이지 정보 오는거 오늘 예약 목록, 기간 만료 예약 목록, 이벤트 신청 회원 목록
+   데이터 넘어오는거 개발 완료
+
+2. 해당 카드 클릭시 데이터가 넘어오며, 관리자는 각각의 정보를 볼수 있음
+
+3. 사이드바 기능 디자인 적용 및 관리자 페이지 상태 변경, 조작 기능 개발 필요
+
+4. 언제 최초 만들었는지 언제 수정되었는지 확인하는 컬럼이 필요함 (공통 엔티티로 상위 클래스에 생성)
+
+5. DB 설계를 진짜 잘해야 한다. 설계 못하면, 개발 과정이 고통스러움....
+   (DB 1개 수정하면 해당 테이블 사용하는 모든 쿼리 및 코드를 바꿔야함.)
+
+6. 몰랐던 내용 정리 완료
+   (https://chamchicoder.tistory.com/264)
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)

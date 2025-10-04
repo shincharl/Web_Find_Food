@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
+public class Reservation extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -47,5 +47,9 @@ public class Reservation {
 
     @Column
     private String event;
+
+    //@Column
+
+
 
 }
