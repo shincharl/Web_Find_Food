@@ -19,6 +19,32 @@ const Allreservation = () => {
             });
     }, []);
 
+    // 날짜/시간 포맷 유틸 함수
+    const formatDate = (dateStr) => {
+        if(!dateStr) return "-";
+        const date = new Date(dateStr);
+        if(isNaN(date)) return dateStr; // 변환 실패 시 그대로 출력
+        return date.toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+        });
+    };
+    
+    const formatTime = (timeStr) => {
+        if(!timeStr) return "-";
+
+        const date = new Date(timeStr);
+        if (isNaN(date)) return timeStr;
+
+        return date.toLocaleTimeString("ko-KR", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+            timeZone: "Asia/Seoul", // KST 변환
+        });
+    };
+
     // 수정하기 버튼 입력
     const modify = async (reservation) => {
 
@@ -26,6 +52,9 @@ const Allreservation = () => {
 
        if(!inputPassword){
             alert('잘못된 입력입니다...');
+            return;
+       }else if(reservation.status === '승인'){
+            alert('이미 관리자가 승인한 예약입니다. 회사로 연락 바랍니다.');
             return;
        }
 
@@ -49,6 +78,9 @@ const Allreservation = () => {
 
         if(!inputPassword){
             alert('잘못된 입력입니다.');
+            return;
+        }else if(reservation.status === '승인'){
+            alert('이미 관리자가 승인한 예약입니다. 회사로 연락 바랍니다.');
             return;
         }
 
@@ -75,10 +107,10 @@ const Allreservation = () => {
 
                         <div className={styles.content}>
                             <h3 className={styles.name}>{reservation.name}
-                                {" "}<input type="checkbox" className={styles.checkbox} />
+                                {" "}
                             </h3>
                             <p className={styles.text}>
-                               📅 {reservation.calender} ⏰ {reservation.clock}
+                               📅 {formatDate(reservation.calender)} ⏰ {formatTime(reservation.clock)}
                             </p>
                             <p className={styles.text}>
                                🐶 {reservation.dogType} ({reservation.dogAge}살)
@@ -88,6 +120,7 @@ const Allreservation = () => {
                                 📍 {reservation.location} ({reservation.distance} km)
                             </p>
                             <p className={styles.text}>🎉 {reservation.event}</p>
+                            <p className={styles.text}>예약상태 : {reservation.status}</p>
                         </div> 
                          <div className={styles.rightButtonWrapper}>
                                 <button className={styles.rightButtonArea} onClick={() => modify(reservation)}>

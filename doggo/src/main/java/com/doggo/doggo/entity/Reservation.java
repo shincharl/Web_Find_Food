@@ -1,9 +1,6 @@
 package com.doggo.doggo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -48,8 +45,15 @@ public class Reservation extends BaseEntity {
     @Column
     private String event;
 
-    //@Column
+    @Column
+    private String status;
 
+    @PrePersist
+    public void prePersist() {
+        if(this.status == null) {
+            this.status = "대기";
+        }
+    }
 
 
 }

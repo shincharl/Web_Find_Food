@@ -929,3 +929,20 @@ https://ray.so/oacBy3Y
 <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+
+2025/10/17
+
+1. 전체 페이지 완성!!!! (생각 보다 오래걸렸다.)
+2. 테스트 결과 모든 동작 완성
+3. Qna 삭제 기능이 없는데 이것만 하면 된다.
+4. 다음 개발할때 하고 싶은 것 외부 로그인, 댓글 AI가 걸러내기, 게시판 좀더 완성형으로 만들기
+5. Next.js 왜 사용하는지 알것 같다. 리엑트가 자유롭긴 한데 페이지 이동이 너무 더러워짐 ㅎㅎ.....
+
+**현재까지 사용한 기술**</br>
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)

@@ -18,5 +18,15 @@ public class QnaDTO {
 
     private String satisfaction; // 사용자 라디오 평가
 
+    private String createdAt; // 작성일
 
+    private String updateAt; // 수정일
+
+    public QnaDTO(Long id, String memo, String satisfaction, String createdAt) {
+        this.id = id;
+        this.memo = memo;
+        this.satisfaction = satisfaction;
+        this.createdAt = createdAt;
+
+    }
 }

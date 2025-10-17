@@ -3,12 +3,6 @@ import { useOutletContext, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react"
 import styles from "../css/Reservation.module.css";
 
-const sampleReservations = [
-  { id: 1, name: "홍길동", dogType: "푸들", time: "10:00", status: "대기" },
-  { id: 2, name: "김철수", dogType: "시츄", time: "11:00", status: "승인" },
-  { id: 3, name: "박영희", dogType: "말티즈", time: "14:00", status: "취소" },
-];
-
 const MasterPage = () => {
     const outletContext = useOutletContext() || {};
     const {userData} = outletContext;
@@ -17,9 +11,11 @@ const MasterPage = () => {
     const [todayCount, setTodayCount] = useState([]);
     const [expiredCount, setExpiredCount] = useState([]);
     const [eventChoiceMemberCount, setEventChoiceMemberCount] = useState([]);
+    const [qnaCount, setQnaCount] = useState([]);
 
     const [selectedType, setSelectedType] = useState(null);
     const [tableData, setTableData] = useState([]);
+
 
     // 각각 카드 클릭 시 처리할 함수
     const handleCardClick = (type) => {
@@ -29,12 +25,44 @@ const MasterPage = () => {
       if (type === "today"){ url = "http://localhost:8080/api/masterpage/today/list";}
       else if (type === "expired"){url = "http://localhost:8080/api/masterpage/expired/list";}
       else if (type === "event"){url = "http://localhost:8080/api/masterpage/event/list";}
+      else if (type === "qna"){url="http://localhost:8080/api/masterpage/master/qna";}
 
       axios.get(url)
         .then((res) => setTableData(res.data))
         .catch((err) => console.error(`${type} 데이터 불러오기 실패:`, err));
 
     }
+
+    const handleStatusChange = (id, newStatus) => {
+     
+      // 상태 변경 전 원본을 따로 저장
+    const originalStatus = tableData.find(item => item.id === id)?.status;
+    
+      // 프론트엔드 상태 즉시 업데이트
+    setTableData((prev) => 
+      prev.map((item) => 
+        item.id === id ? {...item, status: newStatus} : item
+      )
+    );
+
+      // 백엔드로 변경 요청
+      axios.put(`http://localhost:8080/api/masterpage/status/${id}`, { status: newStatus })
+        .then((res) => {
+            console.log("상태 변경 성공:", res.data);
+        })
+        .catch((err) => {
+            console.error("상태 변경 실패:" , err);
+            alert("상태 변경 중 오류가 발생했습니다.");
+
+            // 실패 시 다시 원래 상태로 복구
+            setTableData((prev) =>
+              prev.map((item) => 
+                item.id === id ? {...item, status: originalStatus} : item
+              )
+            );
+        });
+    }
+
 
     useEffect(() => {
         if(!userData){
@@ -49,6 +77,7 @@ const MasterPage = () => {
               setTodayCount(res.data.todayCount);
               setExpiredCount(res.data.expiredCount);
               setEventChoiceMemberCount(res.data.eventChoiceMemberCount);
+              setQnaCount(res.data.qnaCount);
             })
             .catch((err) => {
               console.error("예약 데이터 불러오기 실패:", err);
@@ -81,8 +110,14 @@ const MasterPage = () => {
         <div style={{ flex: 1, background: "#fff", padding: 20, borderRadius: 8, boxShadow: "0 2px 5px rgba(0,0,0,0.1)" }}
           onClick={() => handleCardClick("event")}
         >
-          <h3>이벤트 신청 회원</h3>
+          <h4>이벤트 신청 회원</h4>
           <p>{eventChoiceMemberCount}건</p>
+        </div>
+        <div style={{ flex: 1, background: "#fff", padding: 20, borderRadius: 8, boxShadow: "0 2px 5px rgba(0,0,0,0.1)" }}
+          onClick={() => handleCardClick("qna")}
+        >
+          <h3>QnA 목록</h3>
+          <p>{qnaCount}건</p>
         </div>
       </div>
 
@@ -94,10 +129,51 @@ const MasterPage = () => {
               ? "오늘 예약 목록"
               : selectedType === "expired"
               ? "기간 만료 예약 목록"
-              : "이벤트 신청 회원 목록"}
+              : selectedType === "event"
+              ? "이벤트 신청 회원 목록"
+              : selectedType === "qna"
+              ? "QnA 목록"
+              : ""
+              }
           </h3>
 
-          <table
+          {/* QnA 목록일 때는 다른 테이블 렌더링 */}
+          {selectedType === "qna" ? (
+            <table
+              border={1}
+              cellPadding={10}
+              cellSpacing={0}
+              style={{ width: "100%", background: "#fff", background: 8}}
+              >
+              <thead>
+                <tr style={{ background: "#ecf0f1" }}>
+                  <th>ID</th>
+                  <th>메모</th>
+                  <th>만족도</th>
+                  <th>작성일</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.length > 0 ? (
+                  tableData.map((res) => (
+                    <tr key={res.id}>
+                      <td>{res.id}</td>
+                      <td>{res.memo}</td>
+                      <td>{res.satisfaction}</td>
+                      <td>{res.createdAt}</td>
+                    </tr>
+                  ))
+                ): (
+                  <tr>
+                    <td colSpan={4} style={{textAlign: "center", color: "gray"}}>
+                      QnA 데이터가 없습니다.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          ) : (
+                      <table
             border={1}
             cellPadding={10}
             cellSpacing={0}
@@ -120,7 +196,17 @@ const MasterPage = () => {
                     <td>{res.name}</td>
                     <td>{res.dogType}</td>
                     <td>{res.clock}</td>
-                    <td>{res.status || "-"}</td>
+                    <td>
+                      현재상태 : {res.status}<br/>
+                     <select 
+                        value={res.status || ""}
+                        onChange={(e) => handleStatusChange(res.id, e.target.value)}
+                      >
+                        <option value="대기">대기</option>
+                        <option value="승인">승인</option>
+                        
+                     </select>
+                    </td>
                   </tr>
                 ))
               ) : (
@@ -132,6 +218,7 @@ const MasterPage = () => {
               )}
             </tbody>
           </table>
+          )}
         </>
       )}
     </div>

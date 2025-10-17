@@ -1,5 +1,6 @@
 package com.doggo.doggo.Service;
 
+import com.doggo.doggo.dto.ReservationStatusUpdateDTO;
 import com.doggo.doggo.entity.Reservation;
 import com.doggo.doggo.repository.reservationRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,6 +40,16 @@ public class MemberTodayDateService {
     public List<Reservation> getEventAppliedReservations(){
 
         return reservationRepository.findAllByEventIsNotNullAndEventNot("");
+    }
+
+    public Reservation updateStatusService(Long id, ReservationStatusUpdateDTO dto){
+
+        Reservation reservation = reservationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("예약을 찾을 수 없습니다."));
+
+        reservation.setStatus(dto.getStatus());
+        return reservationRepository.save(reservation);
+
     }
 
 }

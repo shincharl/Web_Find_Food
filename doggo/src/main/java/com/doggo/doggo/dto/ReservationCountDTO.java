@@ -9,4 +9,5 @@ public class ReservationCountDTO {
     private Long todayCount;
     private Long expiredCount;
     private Long EventChoiceMemberCount;
+    private Long qnaCount;
 }

@@ -274,10 +274,18 @@ const Home = () => {
           <p style={{ fontWeight: 700, marginBottom: 20 }}>예약 최종 확인</p>
 
           <div>
-            <strong>날짜:</strong> {selected_Calender ? selected_Calender.toLocaleDateString("ko-KR") : "-"}
+            <strong>날짜:</strong> {selected_Calender ? selected_Calender.toLocaleDateString("ko-KR", {
+                year : "numeric",
+                month : "2-digit",
+                day : "2-digit",
+            }) : "-"}
           </div>
           <div>
-            <strong>시간:</strong> {selected_Clock ? selected_Clock.toLocaleTimeString() : "-"}
+            <strong>시간:</strong> {selected_Clock ? selected_Clock.toLocaleTimeString("ko-KR", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+            }) : "-"}
           </div>
           <div>
             <strong>강아지 종류:</strong> {getValues("dogType") || "-"}

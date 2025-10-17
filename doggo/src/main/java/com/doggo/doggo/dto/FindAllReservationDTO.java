@@ -11,5 +11,6 @@ public interface FindAllReservationDTO {
     String getLocation();
     int getDistance();
     String getEvent();
+    String getStatus();
 
 }

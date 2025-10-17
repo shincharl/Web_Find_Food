@@ -32,6 +32,7 @@ public class ReservationController {
         System.out.println("위치: " + reservation.getLocation());
         System.out.println("거리: " + reservation.getTotalDistance());
         System.out.println("이벤트: " + reservation.getEvent());
+        System.out.println("예약상태: " + reservation.getStatus());
 
         // 1. DTO를 엔티티로 변환
         Reservation reservations = reservation.toEntity();
@@ -50,7 +51,8 @@ public class ReservationController {
                 .stream()
                 .map(p -> new FindAllReservationDTOResponse(
                         p.getId(), p.getCalender(), p.getClock(), p.getDogType(), p.getDogAge(),
-                        p.getName(), p.getPhone(), p.getLocation(), p.getDistance(), p.getEvent()
+                        p.getName(), p.getPhone(), p.getLocation(), p.getDistance(), p.getEvent(),
+                        p.getStatus()
                 )).toList(); // password 제외후 춫력
     }
 
@@ -113,6 +115,8 @@ public class ReservationController {
 
         return ResponseEntity.ok("OK");
     }
+
+
 
 
 }
